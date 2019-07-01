@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Jingle Bell</string>
+    <string name="country_flag_description">country flag</string>
 </resources>

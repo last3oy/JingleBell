@@ -5,7 +5,8 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import scb.academy.jinglebell.fragment.AFragment
 import scb.academy.jinglebell.fragment.BFragment
-import scb.academy.jinglebell.fragment.CFragment
+import scb.academy.jinglebell.fragment.CountryListFragment
+import scb.academy.jinglebell.fragment.FormsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,10 +39,10 @@ class MainActivity : AppCompatActivity() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container)
         when (id) {
             R.id.action_a -> {
-                if (fragment is AFragment) return
+                if (fragment is CountryListFragment) return
 
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, AFragment())
+                    .replace(R.id.container, CountryListFragment())
                     .commit()
             }
 
@@ -54,10 +55,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_c -> {
-                if (fragment is CFragment) return
+                if (fragment is FormsFragment) return
 
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, CFragment())
+                    .replace(R.id.container, FormsFragment())
                     .commit()
             }
         }
