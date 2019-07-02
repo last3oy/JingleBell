@@ -1,5 +1,6 @@
 package scb.academy.jinglebell.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -44,10 +45,12 @@ class CountryItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 
     fun bind(country: Country) {
         tvName.text = country.name
-        tvCapital.text = country.capital
+
+        tvCapital.text = itemView.resources
+                .getString(R.string.country_capital_text_template, country.capital.ifEmpty { "-" })
+
         Picasso.get()
                 .load(country.imageUrl)
-                .centerCrop()
                 .into(ivFlag)
     }
 

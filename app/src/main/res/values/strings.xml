@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Jingle Bell</string>
     <string name="country_flag_description">country flag</string>
+    <string name="country_capital_text_template">Capital: %s</string>
 </resources>

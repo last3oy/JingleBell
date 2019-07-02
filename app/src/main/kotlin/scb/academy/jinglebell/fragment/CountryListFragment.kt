@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -14,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import scb.academy.jinglebell.R
 import scb.academy.jinglebell.adapter.CountryAdapter
-import scb.academy.jinglebell.service.CountryApiManager
+import scb.academy.jinglebell.service.ApiManager
 import scb.academy.jinglebell.vo.Country
 
 class CountryListFragment : Fragment() {
@@ -47,12 +48,13 @@ class CountryListFragment : Fragment() {
             }
             layoutManager = LinearLayoutManager(context)
             itemAnimator = DefaultItemAnimator()
+            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         }
 
         loadCountries()
     }
 
     private fun loadCountries() {
-        CountryApiManager.service.countries().enqueue(countryListCallback)
+        ApiManager.countryService.countries().enqueue(countryListCallback)
     }
 }
