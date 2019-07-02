@@ -1,9 +1,8 @@
 package scb.academy.jinglebell
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import scb.academy.jinglebell.fragment.AFragment
 import scb.academy.jinglebell.fragment.BFragment
 import scb.academy.jinglebell.fragment.CountryListFragment
 import scb.academy.jinglebell.fragment.FormsFragment
