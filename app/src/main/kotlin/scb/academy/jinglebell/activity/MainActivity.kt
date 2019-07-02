@@ -1,9 +1,10 @@
-package scb.academy.jinglebell
+package scb.academy.jinglebell.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import scb.academy.jinglebell.fragment.BFragment
+import scb.academy.jinglebell.R
+import scb.academy.jinglebell.fragment.SongListFragment
 import scb.academy.jinglebell.fragment.CountryListFragment
 import scb.academy.jinglebell.fragment.FormsFragment
 
@@ -46,10 +47,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_b -> {
-                if (fragment is BFragment) return
+                if (fragment is SongListFragment) return
 
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, BFragment())
+                    .replace(R.id.container, SongListFragment())
                     .commit()
             }
 

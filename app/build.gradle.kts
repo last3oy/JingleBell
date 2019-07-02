@@ -27,6 +27,10 @@ android {
     sourceSets {
         getByName("main").java.srcDirs("src/main/kotlin")
     }
+
+    androidExtensions {
+        isExperimental = true
+    }
 }
 
 dependencies {
