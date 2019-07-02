@@ -2,4 +2,9 @@
     <string name="app_name">Jingle Bell</string>
     <string name="country_flag_description">country flag</string>
     <string name="country_capital_text_template">Capital: %s</string>
+
+    <string name="fill_id">ID</string>
+    <string name="fill_name">Name</string>
+    <string name="form_hint">Please fill in this box</string>
+    <string name="button_do_something">Do Something</string>
 </resources>

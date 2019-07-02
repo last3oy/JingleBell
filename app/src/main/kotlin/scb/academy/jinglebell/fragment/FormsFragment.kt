@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import scb.academy.jinglebell.R
 
-class FormsFragment: Fragment() {
+class FormsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_c, container, false)
+        return inflater.inflate(R.layout.fragment_forms, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
