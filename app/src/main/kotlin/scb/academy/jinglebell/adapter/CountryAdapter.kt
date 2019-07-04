@@ -1,6 +1,5 @@
 package scb.academy.jinglebell.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,7 +11,9 @@ import com.squareup.picasso.Picasso
 import scb.academy.jinglebell.R
 import scb.academy.jinglebell.vo.Country
 
-class CountryAdapter(countries: List<Country>) : ListAdapter<Country, CountryItemViewHolder>(CountryItemCallback()) {
+class CountryAdapter(
+        countries: List<Country> = listOf()
+) : ListAdapter<Country, CountryItemViewHolder>(CountryItemCallback()) {
 
     init {
         submitList(countries)

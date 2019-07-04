@@ -24,6 +24,8 @@
 
         <activity android:name=".activity.SongInfoActivity" />
 
+        <activity android:name=".activity.WelcomeActivity" />
+
     </application>
 
 </manifest>

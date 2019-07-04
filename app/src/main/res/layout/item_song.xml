@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toStartOf="@id/tv_song_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/colorPrimary" />
+        tools:background="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tv_song_name"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="@id/iv_next"
         app:layout_constraintStart_toEndOf="@id/iv_song_artwork"
         app:layout_constraintTop_toTopOf="@id/iv_song_artwork"
-        tools:text="name" />
+        tools:text="Edge of the sky" />
 
     <TextView
         android:id="@+id/tv_song_artist"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_song_name"
         app:layout_constraintStart_toStartOf="@id/tv_song_name"
         app:layout_constraintTop_toBottomOf="@id/tv_song_name"
-        tools:text="artist" />
+        tools:text="Bodyslam" />
 
     <TextView
         android:id="@+id/tv_song_price"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_song_name"
         app:layout_constraintStart_toStartOf="@id/tv_song_artist"
         app:layout_constraintTop_toBottomOf="@id/tv_song_artist"
-        tools:text="$100" />
+        tools:text="100 usd" />
 
     <ImageView
         android:id="@+id/iv_next"

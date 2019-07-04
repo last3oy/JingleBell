@@ -1,5 +1,7 @@
 package scb.academy.jinglebell.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,9 +9,24 @@ import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import scb.academy.jinglebell.R
 import scb.academy.jinglebell.vo.Song
+import java.text.DateFormat
+import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
+import java.util.*
 
 class SongInfoActivity : AppCompatActivity() {
+
+    companion object {
+        private const val EXTRA_SONG = "song"
+
+        private const val DATE_FORMAT_ISO_8601 = "YYYY-MM-dd'T'HH:mm:ss'Z'"
+        private const val DATE_FORMAT_DATE_ONLY = "YYYY-MM-dd"
+
+        fun startActivity(context: Context, song: Song? = null) = context
+                .startActivity(Intent(context, SongInfoActivity::class.java).apply {
+                    putExtra(EXTRA_SONG, song)
+                })
+    }
 
     private lateinit var ivSongArtWork: ImageView
     private lateinit var tvSongName: TextView
@@ -31,20 +48,24 @@ class SongInfoActivity : AppCompatActivity() {
         tvSongTrackPrice = findViewById(R.id.tv_track_price)
         tvSongCollectionPrice = findViewById(R.id.tv_collection_price)
 
-        val song = intent.getParcelableExtra<Song>("song")
+        val song = intent.getParcelableExtra<Song>(EXTRA_SONG) ?: return
 
-        setTitle("${song.artistName}")
+        title = song.artistName
 
         Picasso.get()
                 .load(song.artworkUrl)
                 .into(ivSongArtWork)
         tvSongName.text = song.name
         tvSongAlbum.text = song.album
-        val date = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").parse(song.releaseDate)
-        val out = SimpleDateFormat("YYYY-MM-dd")
-        tvSongReleaseDate.text = out.format(date).toString()
+
         tvSongGenre.text = song.genre
-        tvSongTrackPrice.text = "${song.price} ${song.priceCurrency}"
-        tvSongCollectionPrice.text = "${song.collectionPrice} ${song.priceCurrency}"
+        tvSongTrackPrice.text = getString(R.string.price_text_template, song.price, song.priceCurrency)
+        tvSongCollectionPrice.text = getString(R.string.price_text_template, song.collectionPrice, song.priceCurrency)
+        val releaseDate = SimpleDateFormat(DATE_FORMAT_ISO_8601, Locale.getDefault()).parse(song.releaseDate)
+        tvSongReleaseDate.text = releaseDate?.let { date ->
+            SimpleDateFormat(DATE_FORMAT_DATE_ONLY, Locale.getDefault())
+                    .format(date)
+                    .toString()
+        } ?: "-"
     }
 }

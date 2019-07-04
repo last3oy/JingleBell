@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_a"
+        android:id="@+id/action_country_list"
         android:icon="@drawable/icon_language"
-        android:title="a" />
+        android:title="@string/menu_country_list" />
 
     <item
-        android:id="@+id/action_b"
+        android:id="@+id/action_song"
         android:icon="@drawable/icon_agenda"
-        android:title="b" />
+        android:title="@string/menu_song" />
 
     <item
-        android:id="@+id/action_c"
+        android:id="@+id/action_profile"
         android:icon="@drawable/icon_supervisor_account"
-        android:title="c" />
+        android:title="@string/menu_profile" />
 </menu>

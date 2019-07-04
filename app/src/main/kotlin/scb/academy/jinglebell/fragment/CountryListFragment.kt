@@ -25,11 +25,10 @@ class CountryListFragment : Fragment() {
 
     private val countryListCallback = object : Callback<List<Country>> {
         override fun onFailure(call: Call<List<Country>>, t: Throwable) {
-            Log.i("retrofit", "onFailure")
+            Log.e("networking", "Can not call country list", t)
         }
 
         override fun onResponse(call: Call<List<Country>>, response: Response<List<Country>>) {
-            Log.i("retrofit", "onResponse")
             val countries = response.body() ?: return
             countryAdapter.submitList(countries)
         }
@@ -43,7 +42,7 @@ class CountryListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvCountryList = view.findViewById(R.id.rv_country_list)
         rvCountryList.apply {
-            adapter = CountryAdapter(listOf()).also {
+            adapter = CountryAdapter().also {
                 countryAdapter = it
             }
             layoutManager = LinearLayoutManager(context)

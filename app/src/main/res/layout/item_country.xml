@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/iv_country_flag"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/country_flag_image_width"
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:contentDescription="@string/country_flag_description"
@@ -15,7 +15,8 @@
         app:layout_constraintDimensionRatio="h,16:9"
         app:layout_constraintEnd_toStartOf="@id/tv_country_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_country_name"

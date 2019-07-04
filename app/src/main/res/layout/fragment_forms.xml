@@ -2,36 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_nickname_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fill_id" />
+        android:text="@string/enter_nickname_label" />
 
     <EditText
+        android:id="@+id/et_nickname"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/form_hint" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fill_name" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/form_hint" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_button"
-        android:text="@string/button_do_something" />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textAlignment="center"
+        android:inputType="text"
+        android:imeOptions="actionSend"
+        android:hint="@string/nickname_hint" />
 
 </LinearLayout>

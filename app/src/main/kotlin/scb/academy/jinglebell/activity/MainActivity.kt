@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import scb.academy.jinglebell.R
-import scb.academy.jinglebell.fragment.SongListFragment
 import scb.academy.jinglebell.fragment.CountryListFragment
 import scb.academy.jinglebell.fragment.FormsFragment
+import scb.academy.jinglebell.fragment.SongListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         return@OnNavigationItemSelectedListener when (item.itemId) {
-            R.id.action_a, R.id.action_b, R.id.action_c -> {
+            R.id.action_country_list, R.id.action_song, R.id.action_profile -> {
                 changeFragment(item.itemId)
                 true
             }
@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         bnvNavigation = findViewById(R.id.bnv_navigation)
+
         bnvNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         val fragment = supportFragmentManager.findFragmentById(R.id.container)
@@ -36,31 +38,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeFragment(id: Int) {
-        val fragment = supportFragmentManager.findFragmentById(R.id.container)
-        when (id) {
-            R.id.action_a -> {
-                if (fragment is CountryListFragment) return
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.container)
 
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, CountryListFragment())
-                    .commit()
+        val newFragment = when (id) {
+            R.id.action_country_list -> {
+                if (currentFragment is CountryListFragment) return
+                CountryListFragment()
             }
 
-            R.id.action_b -> {
-                if (fragment is SongListFragment) return
-
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, SongListFragment())
-                    .commit()
+            R.id.action_song -> {
+                if (currentFragment is SongListFragment) return
+                SongListFragment()
             }
 
-            R.id.action_c -> {
-                if (fragment is FormsFragment) return
-
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, FormsFragment())
-                    .commit()
+            R.id.action_profile -> {
+                if (currentFragment is FormsFragment) return
+                FormsFragment()
             }
+
+            else -> return
         }
+
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.container, newFragment)
+                .commit()
     }
 }

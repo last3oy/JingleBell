@@ -11,7 +11,14 @@ import com.squareup.picasso.Picasso
 import scb.academy.jinglebell.R
 import scb.academy.jinglebell.vo.Song
 
-class SongAdapter(private val onClick: (Song) -> Unit = {}) : ListAdapter<Song, SongItemViewHolder>(SongItemCallback()) {
+class SongAdapter(
+        songs: List<Song> = listOf(),
+        private val onClick: (Song) -> Unit = {}
+) : ListAdapter<Song, SongItemViewHolder>(SongItemCallback()) {
+
+    init {
+        submitList(songs)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SongItemViewHolder(parent)
 

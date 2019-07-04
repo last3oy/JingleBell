@@ -5,20 +5,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiManager {
 
-    val countryService: CountryApiService by lazy {
-        Retrofit.Builder()
-                .baseUrl("https://restcountries.eu/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .run { create(CountryApiService::class.java) }
-    }
+    val countryService by lazy { createService<CountryApiService>("https://restcountries.eu/") }
 
-    val artistSevice: ArtistApiService by lazy {
-        Retrofit.Builder()
-                .baseUrl("https://itunes.apple.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .run { create(ArtistApiService::class.java) }
-    }
+    val artistService by lazy { createService<ArtistApiService>("https://itunes.apple.com") }
+
+    private inline fun <reified T> createService(baseUrl: String): T =
+            Retrofit.Builder()
+                    .baseUrl(baseUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .run { create(T::class.java) }
 
 }
